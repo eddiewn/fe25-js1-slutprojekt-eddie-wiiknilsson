@@ -1,0 +1,43 @@
+*{
+    
+    margin: 0;
+    padding: 0;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.7 ), /* gray overlay */
+            rgba(0, 0, 0, 0.7)
+        ),
+        url('./images/homePageBG.webp');
+    z-index: -1;
+}
+
+main{
+    padding: 2rem 12rem 2rem 12em;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    color: #a3a3a3;
+    padding: 2rem;
+    border-radius: 12px;;
+    background-color: #151515;
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    font-size: 3rem;
+    background-color: rgb(121, 0, 0);
+    color: white;
+    padding: 0.25rem;
+}
