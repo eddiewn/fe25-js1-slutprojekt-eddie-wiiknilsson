@@ -8,14 +8,17 @@
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <main>
-        <section class="container">
-            <h1 class="text-6xl">MovieDB</h1>
+    <main class="py-10 pr-48 pl-48">
+        <section class="flex flex-col justify-center items-center gap-1 text-neutral-400 p-8 rounded-xl bg-[#151515]">
+            <h1 class="text-5xl bg-red-800 text-white p-1 rounded">MovieDB</h1>
             <p>Explore a vast collection of movies from various genres and eras.</p>  
             <form action="">
                 <input type="text">
             </form>
+        <button id="browse-button" class="rounded p-1 bg-red-800 text-white">Start Browsing</button>
         </section>
     </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
