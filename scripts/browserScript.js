@@ -5,6 +5,13 @@ let poplarMoviesPage = 1
 async function topMovies(){
     const data = await fetchTopMovies();
     const movies = data.results;
+
+    
+    if(!movies) {
+        alert("No data returned from fetchTopMovies");
+        return;
+    }
+    
     console.log(movies[0])
     const topMovieContainer = document.getElementById("top-movies-container");
     const topMovies = document.createElement("div");
@@ -45,6 +52,10 @@ async function popularMovies(page){
     const data = await fetchPopularMovies(page);
     const movies = data.results;
 
+    if(!movies) {
+        alert("No data returned from fetchPopularMovies");
+        return;
+    }
     const popularMovieContainer = document.getElementById("popular-movies-container");
     const popularMovies = document.createElement("div");
 

@@ -7,6 +7,11 @@ console.log("Search query:", query);
 
 async function displaySearchResults(query) {
     const data = await fetchSearchData(query);
+
+    if(!data.movies && !data.people) {
+        alert("No data returned from fetchSearchData");
+        return;
+    }
     const movies = data.movies.results;
 
     const people = data.people.results;

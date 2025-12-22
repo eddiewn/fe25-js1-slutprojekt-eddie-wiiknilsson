@@ -6,6 +6,11 @@ const personId = params.get('id');
 async function displayPersonDetails() {
     const person = await fetchPersonDetails(personId);
     console.log(person);
+
+        if(!person) {
+        alert("No data returned from fetchPersonDetails");
+        return;
+    }
     
     const personContainer = document.getElementById('person-details');
 

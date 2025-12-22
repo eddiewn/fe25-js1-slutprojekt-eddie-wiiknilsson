@@ -9,6 +9,11 @@ async function movieDetails() {
     const movie = await fetchMovieDetails(query);
     console.log(movie);
 
+    if(!movie) {
+        alert("No data returned from fetchMovieDetails");
+        return;
+    }
+
     const movieContainer = document.getElementById("movie-details");
     
     const movieCard = document.createElement("div");
@@ -17,7 +22,7 @@ async function movieDetails() {
     const cardImage = document.createElement("img");
     cardImage.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     cardImage.alt = movie.title;
-    
+
     const movieTitle = document.createElement("h1");
     movieTitle.className = "movie-title text-white p-4 text-3xl";
     movieTitle.textContent = movie.title;
