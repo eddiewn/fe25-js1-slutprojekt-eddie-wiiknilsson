@@ -7,6 +7,6 @@ body::before {
             rgba(0, 0, 0, 0.7 ),
             rgba(0, 0, 0, 0.7)
         ),
-        url('./images/homePageBG.webp');
+        url('../images/homePageBG.webp');
     z-index: -1;
 }
