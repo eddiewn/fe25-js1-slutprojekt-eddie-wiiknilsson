@@ -7,7 +7,7 @@ async function displayPersonDetails() {
     const person = await fetchPersonDetails(personId);
     console.log(person);
 
-        if(!person) {
+    if(!person) {
         alert("No data returned from fetchPersonDetails");
         return;
     }

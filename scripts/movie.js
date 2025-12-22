@@ -10,7 +10,7 @@ async function movieDetails() {
     console.log(movie);
 
     if(!movie) {
-        alert("No data returned from fetchMovieDetails");
+        alert("Det gick fel, kom igen senare.");
         return;
     }
 
@@ -27,10 +27,19 @@ async function movieDetails() {
     movieTitle.className = "movie-title text-white p-4 text-3xl";
     movieTitle.textContent = movie.title;
 
+    const movieGenres = document.createElement("p");
+    movieGenres.className = "movie-genres text-gray-400 p-4";
+    movieGenres.textContent = `Genres: ${movie.genres.map(genre => genre.name).join(", ")}`;
+
+    const movieLanguage = document.createElement("p");
+    movieLanguage.className = "movie-language text-gray-400 p-4";
+    movieLanguage.textContent = `Original Language: ${movie.original_language.toUpperCase()}`;
+
     const movieOverview = document.createElement("p");
     movieOverview.className = "movie-overview text-gray-300 p-4";
     movieOverview.textContent = movie.overview;
-    movieCard.append(cardImage, movieTitle, movieOverview);
+
+    movieCard.append(cardImage, movieTitle, movieGenres, movieLanguage, movieOverview);
     movieContainer.appendChild(movieCard);
 }
 
