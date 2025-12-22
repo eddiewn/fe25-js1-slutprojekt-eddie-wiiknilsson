@@ -78,5 +78,5 @@ async function displaySearchResults(query) {
     });
     peopleContainer.appendChild(peopleSearchResults);
 }
-
+//test
 displaySearchResults(query);
