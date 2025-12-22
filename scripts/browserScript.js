@@ -11,9 +11,10 @@ async function topMovies(){
     topMovies.className = "flex flex-nowrap overflow-x-auto gap-4";
     movies.slice(0,10).forEach(movie => {
         const movieCard = document.createElement("div");
-        movieCard.className = "movie-card max-w-48 flex-shrink-0 cursor-pointer";
+        movieCard.className = "movie-card flex-shrink-0 cursor-pointer";
 
         const cardImage = document.createElement("img");
+
         cardImage.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
         cardImage.alt = movie.title;
 
@@ -53,11 +54,12 @@ async function popularMovies(page){
         movieCard.className = "movie-card cursor-pointer";
 
         const cardImage = document.createElement("img");
+        cardImage.className = "";
         cardImage.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
         cardImage.alt = movie.title;
 
         const movieTitle = document.createElement("p");
-        movieTitle.className = "movie-title text-white text-xs";
+        movieTitle.className = "movie-title text-white text-base";
         movieTitle.textContent = movie.title;
 
         const movieReleaseDate = document.createElement("p");

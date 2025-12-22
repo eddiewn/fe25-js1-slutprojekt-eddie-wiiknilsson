@@ -13,7 +13,6 @@ async function displaySearchResults(query) {
 
     console.log(data);
     const movieContainer = document.getElementById("movie-container");
-    movieContainer.innerHTML = "";
     if (movies.length === 0) {
         movieContainer.textContent = "No results found.";
         return;
@@ -28,6 +27,7 @@ async function displaySearchResults(query) {
         movieCard.className = "movie-card cursor-pointer max-w-48";
 
         const cardImage = document.createElement("img");
+        cardImage.className = "max-h-128";
         cardImage.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
         cardImage.alt = movie.title;
 

@@ -1,8 +1,6 @@
 const API_KEY = "9e364d18136e5e08c2c0f734f76ad009"; 
 
 export const fetchSearchData = async (query) => {
-
-
     let data = {
         movies: null,
         people: null
@@ -52,5 +50,29 @@ export const fetchPopularMovies = async (page = 1) => {
         return data;
     } catch (error) {
         console.error("Error fetching popular movies:", error);
+    }
+};
+
+export const fetchMovieDetails = async (movieId) => {
+    const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+    try {
+        const response = await fetch(movieDetailsUrl);
+        const data = await response.json();
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.error("Error fetching movie details:", error);
+    }
+};
+
+export const fetchPersonDetails = async (personId) => {
+    const personDetailsUrl = `https://api.themoviedb.org/3/person/${personId}?api_key=${API_KEY}&language=en-US`;
+    try {
+        const response = await fetch(personDetailsUrl);
+        const data = await response.json();
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.error("Error fetching person details:", error);
     }
 };
