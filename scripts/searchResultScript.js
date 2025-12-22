@@ -15,8 +15,10 @@ async function displaySearchResults(query) {
     const movieContainer = document.getElementById("movie-container");
     if (movies.length === 0) {
         movieContainer.textContent = "No results found.";
-        return;
-    }
+
+    }else{
+
+    
     const movieSearchResults = document.createElement("div");
     movieSearchResults.className = "grid grid-cols-5 gap-6"; 
     movies.forEach(movie => {
@@ -46,7 +48,7 @@ async function displaySearchResults(query) {
         movieSearchResults.appendChild(movieCard);
     });
     movieContainer.appendChild(movieSearchResults);
-    
+}
     const peopleContainer = document.getElementById("people-container");
     peopleContainer.innerHTML = "";
     console.log(people[0])
@@ -60,7 +62,6 @@ async function displaySearchResults(query) {
     peopleSearchResults.className = "grid grid-cols-5 gap-6"; 
     people.forEach(person => {
         if(!person.profile_path) return;
-
 
         const personCard = document.createElement("div");
         personCard.className = "person-card cursor-pointer max-w-48";
