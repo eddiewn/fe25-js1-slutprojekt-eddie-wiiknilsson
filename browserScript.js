@@ -1,7 +1,8 @@
 import { fetchPopularMovies, fetchTopMovies } from "./api/api.js";
 
-async function topMovies(){
+let poplarMoviesPage = 1
 
+async function topMovies(){
     const data = await fetchTopMovies();
     const movies = data.results;
     console.log(movies[0])
@@ -30,14 +31,14 @@ async function topMovies(){
 
 topMovies();
 
-async function popularMovies(){
-    const data = await fetchPopularMovies();
+async function popularMovies(page){
+    const data = await fetchPopularMovies(page);
     const movies = data.results;
 
     const popularMovieContainer = document.getElementById("popular-movies-container");
     const popularMovies = document.createElement("div");
 
-    popularMovies.className = "grid grid-cols-10 gap-6";
+    popularMovies.className = "grid grid-cols-5 gap-6";
     movies.forEach(movie => {
         const movieCard = document.createElement("div");
         movieCard.className = "movie-card rounded-lg";
@@ -58,4 +59,15 @@ async function popularMovies(){
     popularMovieContainer.appendChild(popularMovies);
 }
 
-popularMovies();
+popularMovies(1);
+
+const loadMoreButton = document.getElementById("load-more-popular");
+loadMoreButton.addEventListener("click", () => {
+    poplarMoviesPage++;
+    popularMovies(poplarMoviesPage);
+});
+
+const backButton = document.getElementById('back-to-top');
+backButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
