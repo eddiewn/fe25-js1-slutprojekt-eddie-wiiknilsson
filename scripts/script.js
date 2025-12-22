@@ -1,6 +1,6 @@
-const browseButton = document.getElementById('browse-button');
+const homeButton = document.getElementById('home-button');
 
-browseButton.addEventListener('click', () => {
-    window.location.href = 'browser.html';
+homeButton.addEventListener('click', () => {
+    window.location.href = 'index.html';
 });
 

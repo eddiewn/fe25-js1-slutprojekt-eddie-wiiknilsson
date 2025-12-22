@@ -24,22 +24,30 @@ async function movieDetails() {
     cardImage.alt = movie.title;
 
     const movieTitle = document.createElement("h1");
-    movieTitle.className = "movie-title text-white p-4 text-3xl";
+    movieTitle.className = "movie-title text-white text-3xl";
     movieTitle.textContent = movie.title;
 
+    const movieScore = document.createElement("h2");
+    movieScore.className = "movie-score text-yellow-300 text-xl";
+    movieScore.textContent = `Rating: ${movie.vote_average} / 10 ⭐`;
+    
+    const movieTagLine = document.createElement("h3");
+    movieTagLine.className = "movie-tagline text-gray-300 italic";
+    movieTagLine.textContent = movie.tagline;
+
     const movieGenres = document.createElement("p");
-    movieGenres.className = "movie-genres text-gray-400 p-4";
+    movieGenres.className = "movie-genres text-gray-400 p-2";
     movieGenres.textContent = `Genres: ${movie.genres.map(genre => genre.name).join(", ")}`;
 
     const movieLanguage = document.createElement("p");
-    movieLanguage.className = "movie-language text-gray-400 p-4";
+    movieLanguage.className = "movie-language text-gray-400 p-2";
     movieLanguage.textContent = `Original Language: ${movie.original_language.toUpperCase()}`;
 
     const movieOverview = document.createElement("p");
-    movieOverview.className = "movie-overview text-gray-300 p-4";
+    movieOverview.className = "movie-overview text-gray-300";
     movieOverview.textContent = movie.overview;
 
-    movieCard.append(cardImage, movieTitle, movieGenres, movieLanguage, movieOverview);
+    movieCard.append(cardImage, movieTitle, movieTagLine, movieScore, movieGenres, movieLanguage, movieOverview);
     movieContainer.appendChild(movieCard);
 }
 
