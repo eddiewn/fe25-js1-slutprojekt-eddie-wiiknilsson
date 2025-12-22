@@ -1,4 +1,4 @@
-import { fetchPopularMovies, fetchTopMovies } from "./api/api.js";
+import { fetchPopularMovies, fetchTopMovies } from "../api/api.js";
 
 let poplarMoviesPage = 1
 
@@ -11,18 +11,27 @@ async function topMovies(){
     topMovies.className = "flex flex-nowrap overflow-x-auto gap-4";
     movies.slice(0,10).forEach(movie => {
         const movieCard = document.createElement("div");
+        movieCard.className = "movie-card max-w-48 flex-shrink-0 cursor-pointer";
 
         const cardImage = document.createElement("img");
         cardImage.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
         cardImage.alt = movie.title;
-        movieCard.appendChild(cardImage);
 
-        movieCard.className = "movie-card max-w-48 rounded-lg flex-shrink-0";
+        
         const movieTitle = document.createElement("h2");
         movieTitle.className = "movie-title text-white p";
         movieTitle.textContent = movie.title;
 
-        movieCard.append(movieTitle);
+        const movieReleaseDate = document.createElement("p");
+        movieReleaseDate.className = "movie-release text-gray-400 text-xs";
+        movieReleaseDate.textContent = `${movie.release_date}`;
+
+        movieCard.append(cardImage, movieTitle, movieReleaseDate);
+
+        movieCard.addEventListener("click", () => {
+            window.location.href = `movie.html?id=${movie.id}`;
+        });
+
         topMovies.appendChild(movieCard);
     });
 
@@ -41,17 +50,25 @@ async function popularMovies(page){
     popularMovies.className = "grid grid-cols-5 gap-6";
     movies.forEach(movie => {
         const movieCard = document.createElement("div");
-        movieCard.className = "movie-card rounded-lg";
+        movieCard.className = "movie-card cursor-pointer";
 
         const cardImage = document.createElement("img");
         cardImage.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
         cardImage.alt = movie.title;
-        movieCard.appendChild(cardImage);
 
         const movieTitle = document.createElement("p");
         movieTitle.className = "movie-title text-white text-xs";
         movieTitle.textContent = movie.title;
-        movieCard.append(movieTitle);
+
+        const movieReleaseDate = document.createElement("p");
+        movieReleaseDate.className = "movie-release text-gray-400 text-xs";
+        movieReleaseDate.textContent = `${movie.release_date}`;
+
+        movieCard.append(cardImage, movieTitle, movieReleaseDate);
+
+        movieCard.addEventListener("click", () => {
+            window.location.href = `movie.html?id=${movie.id}`;
+        });
         popularMovies.appendChild(movieCard);
     });
 
@@ -70,4 +87,16 @@ loadMoreButton.addEventListener("click", () => {
 const backButton = document.getElementById('back-to-top');
 backButton.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+const searchForm = document.getElementById('search-form');
+searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if(!searchForm.querySelector('input').value) {
+        return;
+    }
+
+    const query = searchForm.querySelector('input').value;
+    window.location.href = `search.html?query=${encodeURIComponent(query)}`;
 });

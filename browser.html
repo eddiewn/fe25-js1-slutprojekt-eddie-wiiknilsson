@@ -6,7 +6,6 @@
         <title>Browsing Movies</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="styles/main.css" />
-        <script type="module" src="browserScript.js"></script>
     </head>
     <body>
         <header class="flex justify-center h-12 border-b-2 border-red-800 flex items-center p-2">
@@ -21,7 +20,7 @@
                     class="absolute left-1/2 bottom-0 transform -translate-x-1/2  w-full h-1 bg-red-800 rounded"
                 ></span>
             </div>
-            <form class="ml-auto mr-auto" action="">
+            <form id="search-form" class="ml-auto mr-auto" action="">
                 <input type="text" />
                 <button type="submit">🔎</button>
             </form>
@@ -44,5 +43,8 @@
                 </div>
             </section>
         </main>
+        <script src="/scripts/search.js"></script>
+        <script type="module" src="./scripts/browserScript.js"></script>
+
     </body>
 </html>
