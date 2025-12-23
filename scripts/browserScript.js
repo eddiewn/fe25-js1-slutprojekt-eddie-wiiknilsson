@@ -60,7 +60,7 @@ async function popularMovies(page){
     const popularMovies = document.createElement("div");
 
     popularMovies.className = "grid grid-cols-5 gap-6";
-    movies.forEach(movie => {
+    movies.slice(0, 10).forEach(movie => {
         const movieCard = document.createElement("div");
         movieCard.className = "movie-card cursor-pointer";
 
